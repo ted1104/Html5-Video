@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>MEDIA WEBRTC : COMMUNUCATION A TEMPS REEL SUR LE WEB</h1>
+    <video autoplay></video>
 
 
     <script>
@@ -15,7 +16,12 @@
             return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
         }
         if(hasGetUserMedia()){
-            console.log("Has Media Device")
+            const constraint = {
+                video : true
+            }
+            const video = document.querySelector("video");
+            navigator.mediaDevices.getUserMedia(constraint).then((stream) => video.srcObject = stream)
+            // console.log("Has Media Device")
         }else{
             console.log("Not supported")
         }
