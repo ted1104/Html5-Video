@@ -32,6 +32,7 @@
             const video = document.querySelector("#screenshoot video");
             const canvas = document.createElement("canvas");
 
+            //Button to stream video
             captureVideo.onclick = function () {
                 console.log("Cliked")
                 const constraint = { video : true}
@@ -40,6 +41,18 @@
                     video.srcObject = stream
                 }).catch(error => console.log(error))
             }
+
+            //button to make capture d'ecran
+            screenShoot.onclick = function (){
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext("2d").drawImage(video, 0,0)
+
+                console.log(canvas.toDataURL("image/webp"))
+                img.src = canvas.toDataURL("image/webp")
+            }
+
+
 
 
         }else{
