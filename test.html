@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBRTC</title>
+</head>
+<body>
+    <h1>MEDIA WEBRTC : COMMUNUCATION A TEMPS REEL SUR LE WEB</h1>
+    <video autoplay controls></video>
+
+
+    <script>
+        function hasGetUserMedia(){
+            return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+        }
+        if(hasGetUserMedia()){
+            const constraint = {
+                video : true
+                // video : { width : { min : 1280}, height : {min : 720}} //pour definir la resolution
+            }
+            const video = document.querySelector("video");
+            navigator.mediaDevices.getUserMedia(constraint).then((stream) => video.srcObject = stream)
+            // console.log("Has Media Device")
+        }else{
+            console.log("Not supported")
+        }
+    </script>
+    
+</body>
+</html>
